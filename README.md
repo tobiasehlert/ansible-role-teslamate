@@ -1,4 +1,6 @@
 # Ansible Role: TeslaMate
+[![Build Status](https://travis-ci.org/tobiasehlert/ansible-role-teslamate.svg?branch=master)](https://travis-ci.org/tobiasehlert/ansible-role-teslamate)
+
 An Ansible Role that installs TeslaMate on CentOS docker environment.
 
 ## Requirements
