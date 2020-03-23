@@ -1,2 +1,6 @@
 ---
 # tasks file for ansible-role-teslamate
+
+- name: Debug
+  debug:
+    msg: This is a debug message from the role
