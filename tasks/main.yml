@@ -13,3 +13,13 @@
     fail_msg: ERROR: You have not setup the vars that are required! Please read the role-docs..
     success_msg: Check passed.. continuing!
     quiet: yes
+
+- name: Creating folder /opt/teslamate/ to be the directory of TeslaMate files, if it doesn't exist
+  file:
+    path: /opt/teslamate/
+    state: directory
+
+- name: Generating docker-compose.yml configuration file and placing in /opt/teslamate/
+  template:
+    src: docker-compose.yml.j2
+    dest: /opt/teslamate/docker-compose.yml
