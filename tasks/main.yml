@@ -23,3 +23,25 @@
   template:
     src: docker-compose.yml.j2
     dest: /opt/teslamate/docker-compose.yml
+
+- name: Pulling latest version of TeslaMate
+  docker_compose:
+    project_src: /opt/teslamate/
+    pull: yes
+    debug: yes
+  register: docker_compose_output_1
+
+- name: Debugging of docker_compose_output_1 output
+  debug:
+    var: docker_compose_output_1
+
+- name: Restarting docker containers
+  docker_compose:
+    project_src: /opt/teslamate/
+    state: present
+    debug: yes
+  register: docker_compose_output_2
+
+- name: Debugging of docker_compose_output_1 output
+  debug:
+    var: docker_compose_output_2
