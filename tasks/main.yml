@@ -4,12 +4,12 @@
 - name: Validating that required vars are set for the role
   assert:
     that:
-      - fqdn.teslamate | length > 0
-      - fqdn.grafana | length > 0
-      - grafana.admin.username | length > 0
-      - grafana.admin.password | length > 0
-      - postgresql.database.username | length > 0
-      - postgresql.database.password | length > 0
+      - fqdn_teslamate | length > 0
+      - fqdn_grafana | length > 0
+      - grafana_admin_username | length > 0
+      - grafana_admin_password | length > 0
+      - postgresql_database_username | length > 0
+      - postgresql_database_password | length > 0
     fail_msg: ERROR! You have not setup the vars that are required! Please read the role-docs..
     success_msg: Check passed.. continuing!
     quiet: yes

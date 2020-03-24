@@ -11,22 +11,22 @@
 
   Define the domain names that you want to use, to access both web services.
 
-      fqdn.teslamate: ""
-      fqdn.grafana: ""
+      fqdn_teslamate: ""
+      fqdn_grafana: ""
 
   Set the admin username and admin password for your Grafana installation.
 
-      grafana.admin.username: ""
-      grafana.admin.password: ""
+      grafana_admin_username: ""
+      grafana_admin_password: ""
 
   Generated credentials that are used for communications between applications and the database. Use a good randomized password!
 
-      postgresql.database.username: ""
-      postgresql.database.password: ""
+      postgresql_database_username: ""
+      postgresql_database_password: ""
 
   Specify your local timezone, if you don't want to use Stockholm. Work out your timezone name using the [TZ database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) in the linked Wikipedia page.
 
-      timezone: "Europe/Stockholm"
+      teslamate_timezone: "Europe/Stockholm"
 
   ## Dependencies
   This role does only setup the parts that are required for TeslaMate inside Docker.
@@ -42,12 +42,12 @@
   - name: teslamate.yml
     hosts: all
     vars:
-      - fqdn.teslamate: "teslamate.example.com"
-      - fqdn.grafana: "grafana.example.com"
-      - grafana.admin.username: "putsomefunnyadminusername"
-      - grafana.admin.password: "asupersecretadminpassword"
-      - postgresql.database.username: "somedatabaseusername"
-      - postgresql.database.password: "asupersecretpassword"
+      - fqdn_teslamate: "teslamate.example.com"
+      - fqdn_grafana: "grafana.example.com"
+      - grafana_admin_username: "putsomefunnyadminusername"
+      - grafana_admin_password: "asupersecretadminpassword"
+      - postgresql_database_username: "somedatabaseusername"
+      - postgresql_database_password: "asupersecretpassword"
     roles:
       - tobiasehlert.teslamate
   ```
