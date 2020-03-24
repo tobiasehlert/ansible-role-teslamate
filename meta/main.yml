@@ -1,9 +1,12 @@
+---
 galaxy_info:
+  role_name: teslamate
   author: Tobias Lindberg
-  description: Installation and maintaining a installation of TeslaMate application in an CentOS docker environment
+  description: TeslaMate server for RHEL/CentOS with Docker.
 
   issue_tracker_url: https://github.com/tobiasehlert/ansible-role-teslamate/issues
   license: MIT
+
   min_ansible_version: 2.9
 
   platforms:
@@ -16,5 +19,4 @@ galaxy_info:
     - tesla
     - teslamate
 
-dependencies:
-  - src: geerlingguy.docker 
+dependencies: []
