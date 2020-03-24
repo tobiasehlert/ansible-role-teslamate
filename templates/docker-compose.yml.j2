@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  teslamate:
+    image: teslamate/teslamate:latest
+    restart: {{ docker.restart.policy }}
+    depends_on:
+      - database
+    environment:
+      - DATABASE_USER={{ postgresql.database.username }}
+      - DATABASE_PASS={{ postgresql.database.password }}
+      - DATABASE_NAME={{ postgresql.database.name }}
+      - DATABASE_HOST=database
+      - MQTT_HOST=mosquitto
+      - VIRTUAL_HOST={{ fqdn.teslamate }}
+      - CHECK_ORIGIN=true
+      - TZ={{ teslamate.timezone }}
+    volumes:
+      - ./import:/opt/app/import
+    ports:
+      - {{ docker.interface }}:{{ docker.port.teslamate }}:{{ docker.port.teslamate }}
+    cap_drop:
+      - all
+
+  database:
+    image: postgres:{{ postgresql.version }}
+    restart: {{ docker.restart.policy }}
+    environment:
+      - POSTGRES_USER={{ postgresql.database.username }}
+      - POSTGRES_PASSWORD={{ postgresql.database.password }}
+      - POSTGRES_DB={{ postgresql.database.name }}
+    volumes:
+      - teslamate-db:/var/lib/postgresql/data
+
+  grafana:
+    image: teslamate/grafana:latest
+    restart: {{ docker.restart.policy }}
+    environment:
+      - DATABASE_USER={{ postgresql.database.username }}
+      - DATABASE_PASS={{ postgresql.database.password }}
+      - DATABASE_NAME={{ postgresql.database.name }}
+      - DATABASE_HOST=database
+      - GRAFANA_PASSWD={{ grafana.admin.password }}
+      - GF_SECURITY_ADMIN_USER={{ grafana.admin.username }}
+      - GF_SECURITY_ADMIN_PASSWORD={{ grafana.admin.password }}
+      - GF_AUTH_BASIC_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ENABLED=false
+      - GF_SERVER_ROOT_URL=https://{{ fqdn.grafana }}
+    ports:
+      - {{ docker.interface }}:{{ docker.port.grafana }}:{{ docker.port.grafana }}
+    volumes:
+      - teslamate-grafana-data:/var/lib/grafana
+
+  mosquitto:
+    image: eclipse-mosquitto:{{ mosquitto.version }}
+    restart: {{ docker.restart.policy }}
+    ports:
+      - {{ docker.interface }}:{{ docker.port.mosquitto }}:{{ docker.port.mosquitto }}
+    volumes:
+      - mosquitto-conf:/mosquitto/config
+      - mosquitto-data:/mosquitto/data
+
+volumes:
+    teslamate-db:
+    teslamate-grafana-data:
+    mosquitto-conf:
+    mosquitto-data:
