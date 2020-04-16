@@ -2,7 +2,7 @@
 galaxy_info:
   role_name: teslamate
   author: Tobias Lindberg
-  description: TeslaMate inside Docker on RHEL/CentOS.
+  description: TeslaMate installation inside Docker with docker-compose
 
   issue_tracker_url: https://github.com/tobiasehlert/ansible-role-teslamate/issues
   license: MIT
@@ -14,6 +14,15 @@ galaxy_info:
       versions:
         - 7
         - 8
+    - name: Debian
+      versions:
+        - jessie
+        - stretch
+        - buster
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
 
   galaxy_tags:
     - tesla
