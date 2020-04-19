@@ -31,7 +31,7 @@
 
 - name: Pulling latest version of TeslaMate
   docker_compose:
-    project_src: {{ docker_compose_directory }}
+    project_src: "{{ docker_compose_directory }}"
     pull: yes
     debug: yes
   register: docker_compose_output_1
@@ -42,7 +42,7 @@
 
 - name: Restarting docker containers of TeslaMate
   docker_compose:
-    project_src: {{ docker_compose_directory }}
+    project_src: "{{ docker_compose_directory }}"
     state: present
     debug: yes
   register: docker_compose_output_2
