@@ -23,6 +23,7 @@ teslamate_timezone: "Europe/Stockholm"
 
 # other
 docker_interface: 127.0.0.1
+docker_compose_directory: "/opt/teslamate"
 docker_port_grafana: 3000
 docker_port_mosquitto: 1883
 docker_port_teslamate: 4000
