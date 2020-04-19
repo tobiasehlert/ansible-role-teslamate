@@ -16,7 +16,7 @@
 
 - name: Creating folder {{ docker_compose_directory }} to be the directory of TeslaMate files, if it doesn't exist
   file:
-    path: {{ docker_compose_directory }}
+    path: "{{ docker_compose_directory }}"
     state: directory
 
 - name: Generating docker-compose.yml configuration file and placing in {{ docker_compose_directory }}
