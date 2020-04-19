@@ -2,7 +2,7 @@ version: '3'
 
 services:
   teslamate:
-    image: teslamate/teslamate:latest
+    image: teslamate/teslamate:{{ teslamate_version }}
     restart: {{ docker_restart_policy }}
     depends_on:
       - database
@@ -33,7 +33,7 @@ services:
       - teslamate-db:/var/lib/postgresql/data
 
   grafana:
-    image: teslamate/grafana:latest
+    image: teslamate/grafana:{{ grafana_version }}
     restart: {{ docker_restart_policy }}
     environment:
       - DATABASE_USER=${TM_DB_USER}

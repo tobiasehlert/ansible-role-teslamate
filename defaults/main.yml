@@ -8,6 +8,7 @@ fqdn_grafana: ""
 # Grafana related settings
 grafana_admin_username: ""
 grafana_admin_password: ""
+grafana_version: "latest"
 
 # Mosquitto related settings
 mosquitto_version: 1.6
@@ -20,6 +21,7 @@ postgresql_version: 12
 
 # TeslaMate related settings
 teslamate_timezone: "Europe/Stockholm"
+teslamate_version: "latest"
 
 # other
 docker_interface: 127.0.0.1
