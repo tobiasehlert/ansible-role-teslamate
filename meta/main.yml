@@ -16,7 +16,6 @@ galaxy_info:
         - 8
     - name: Debian
       versions:
-        - jessie
         - stretch
         - buster
     - name: Ubuntu
