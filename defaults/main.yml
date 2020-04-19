@@ -20,6 +20,7 @@ postgresql_database_name: teslamate
 postgresql_version: 12
 
 # TeslaMate related settings
+teslamate_htpasswd_content: "teslamate:$apr1$0hau3aWq$yzNEh.ABwZBAIEYZ6WfbH/"
 teslamate_timezone: "Europe/Stockholm"
 teslamate_version: "latest"
 
