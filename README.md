@@ -43,12 +43,15 @@ Specify your local timezone, if you don't want to use Stockholm. Work out your t
 ## Dependencies
 This role does only setup the parts that are required for TeslaMate inside Docker.
 
-Docker itself with docker-compose and an webserver in front of that is still something, that you need to install for yourself as well.
+Docker itself with docker-compose and an webserver in front of that is still something, that you need to install for yourself as well, if you don't want to use Traefik inside Docker.
 
-Ansible role to install:
+Ansible role to install required basics:
 * docker: [geerlingguy.pip](https://galaxy.ansible.com/geerlingguy/pip)
 * docker: [geerlingguy.docker](https://galaxy.ansible.com/geerlingguy/docker)
-* nginx: [nginxinc.nginx](https://galaxy.ansible.com/nginxinc/nginx1) (config can be a little tricky)
+
+Ansible roles for a webservers:
+* nginx: [nginxinc.nginx](https://galaxy.ansible.com/nginxinc/nginx1)
+* apache: [geerlingguy.apache](https://galaxy.ansible.com/geerlingguy/apache)
 
 ## Example Playbook
 ```
