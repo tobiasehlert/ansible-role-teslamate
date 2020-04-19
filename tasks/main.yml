@@ -22,16 +22,16 @@
 - name: Generating docker-compose.yml configuration file and placing in {{ docker_compose_directory }}
   template:
     src: docker-compose.yml.j2
-    dest: {{ docker_compose_directory }}/docker-compose.yml
+    dest: "{{ docker_compose_directory }}/docker-compose.yml"
 
 - name: Generating .env file and placing in {{ docker_compose_directory }}
   template:
     src: env.j2
-    dest: {{ docker_compose_directory }}/.env
+    dest: "{{ docker_compose_directory }}/.env"
 
 - name: Pulling latest version of TeslaMate
   docker_compose:
-    project_src: {{ docker_compose_directory }}/
+    project_src: {{ docker_compose_directory }}
     pull: yes
     debug: yes
   register: docker_compose_output_1
@@ -42,7 +42,7 @@
 
 - name: Restarting docker containers of TeslaMate
   docker_compose:
-    project_src: {{ docker_compose_directory }}/
+    project_src: {{ docker_compose_directory }}
     state: present
     debug: yes
   register: docker_compose_output_2
