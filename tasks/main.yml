@@ -24,6 +24,11 @@
     src: docker-compose.yml.j2
     dest: {{ docker_compose_directory }}/docker-compose.yml
 
+- name: Generating .env file and placing in {{ docker_compose_directory }}
+  template:
+    src: env.j2
+    dest: {{ docker_compose_directory }}/.env
+
 - name: Pulling latest version of TeslaMate
   docker_compose:
     project_src: {{ docker_compose_directory }}/

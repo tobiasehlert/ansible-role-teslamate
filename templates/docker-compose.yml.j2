@@ -7,14 +7,14 @@ services:
     depends_on:
       - database
     environment:
-      - DATABASE_USER={{ postgresql_database_username }}
-      - DATABASE_PASS={{ postgresql_database_password }}
-      - DATABASE_NAME={{ postgresql_database_name }}
+      - DATABASE_USER=${TM_DB_USER}
+      - DATABASE_PASS=${TM_DB_PASS}
+      - DATABASE_NAME=${TM_DB_NAME}
       - DATABASE_HOST=database
       - MQTT_HOST=mosquitto
-      - VIRTUAL_HOST={{ fqdn_teslamate }}
+      - VIRTUAL_HOST=${FQDN_TM}
       - CHECK_ORIGIN=true
-      - TZ={{ teslamate_timezone }}
+      - TZ=${TM_TZ}
     volumes:
       - ./import:/opt/app/import
     ports:
@@ -26,9 +26,9 @@ services:
     image: postgres:{{ postgresql_version }}
     restart: {{ docker_restart_policy }}
     environment:
-      - POSTGRES_USER={{ postgresql_database_username }}
-      - POSTGRES_PASSWORD={{ postgresql_database_password }}
-      - POSTGRES_DB={{ postgresql_database_name }}
+      - POSTGRES_USER=${TM_DB_USER}
+      - POSTGRES_PASSWORD=${TM_DB_PASS}
+      - POSTGRES_DB=${TM_DB_NAME}
     volumes:
       - teslamate-db:/var/lib/postgresql/data
 
@@ -36,13 +36,13 @@ services:
     image: teslamate/grafana:latest
     restart: {{ docker_restart_policy }}
     environment:
-      - DATABASE_USER={{ postgresql_database_username }}
-      - DATABASE_PASS={{ postgresql_database_password }}
-      - DATABASE_NAME={{ postgresql_database_name }}
+      - DATABASE_USER=${TM_DB_USER}
+      - DATABASE_PASS=${TM_DB_PASS}
+      - DATABASE_NAME=${TM_DB_NAME}
       - DATABASE_HOST=database
-      - GRAFANA_PASSWD={{ grafana_admin_password }}
-      - GF_SECURITY_ADMIN_USER={{ grafana_admin_username }}
-      - GF_SECURITY_ADMIN_PASSWORD={{ grafana_admin_password }}
+      - GRAFANA_PASSWD=${GRAFANA_PW}
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PW}
       - GF_AUTH_BASIC_ENABLED=true
       - GF_AUTH_ANONYMOUS_ENABLED=false
       - GF_SERVER_ROOT_URL=https://{{ fqdn_grafana }}
