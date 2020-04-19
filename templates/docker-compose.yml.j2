@@ -18,7 +18,7 @@ services:
     volumes:
       - ./import:/opt/app/import
     ports:
-      - {{ docker_interface }}:{{ docker_port_teslamate }}:{{ docker_port_teslamate }}
+      - {% if docker_interface != "" }{{ docker_interface }}:{{% endif %}}{{ docker_port_teslamate }}:{{ docker_port_teslamate }}
     cap_drop:
       - all
 
@@ -49,7 +49,7 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=false
       - GF_SERVER_ROOT_URL=https://{{ fqdn_grafana }}
     ports:
-      - {{ docker_interface }}:{{ docker_port_grafana }}:{{ docker_port_grafana }}
+      - {% if docker_interface != "" }{{ docker_interface }}:{{% endif %}}{{ docker_port_grafana }}:{{ docker_port_grafana }}
     volumes:
       - teslamate-grafana-data:/var/lib/grafana
 
@@ -57,7 +57,7 @@ services:
     image: eclipse-mosquitto:{{ mosquitto_version }}
     restart: {{ docker_restart_policy }}
     ports:
-      - {{ docker_interface }}:{{ docker_port_mosquitto }}:{{ docker_port_mosquitto }}
+      - {% if docker_interface != "" }{{ docker_interface }}:{{% endif %}}{{ docker_port_mosquitto }}:{{ docker_port_mosquitto }}
     volumes:
       - mosquitto-conf:/mosquitto/config
       - mosquitto-data:/mosquitto/data
