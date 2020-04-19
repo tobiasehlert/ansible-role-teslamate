@@ -2,8 +2,8 @@
 # defaults file for ansible-role-teslamate
 
 # FQDN DNS settings
-fqdn_teslamate: ""
 fqdn_grafana: ""
+fqdn_teslamate: ""
 
 # Grafana related settings
 grafana_admin_username: ""
@@ -16,7 +16,7 @@ mosquitto_version: 1.6
 # PostgreSQL related settings
 postgresql_database_username: ""
 postgresql_database_password: ""
-postgresql_database_name: teslamate
+postgresql_database_name: "teslamate"
 postgresql_version: 12
 
 # TeslaMate related settings
@@ -25,9 +25,10 @@ teslamate_timezone: "Europe/Stockholm"
 teslamate_version: "latest"
 
 # other
-docker_interface: 127.0.0.1
 docker_compose_directory: "/opt/teslamate"
+docker_interface: "127.0.0.1"
 docker_port_grafana: 3000
 docker_port_mosquitto: 1883
 docker_port_teslamate: 4000
-docker_restart_policy: always
+docker_restart_policy: "always"
+letsencrypt_email: "yourperson@example.com"
