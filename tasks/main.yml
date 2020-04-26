@@ -33,6 +33,7 @@
   template:
     src: cert-config.yml.j2
     dest: "{{ docker_compose_directory }}/cert/config.yml"
+  when: proxy_use_custom_certs
 
 - name: Pulling latest version of TeslaMate
   docker_compose:

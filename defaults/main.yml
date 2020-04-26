@@ -25,6 +25,8 @@ teslamate_timezone: "Europe/Stockholm"
 teslamate_version: "latest"
 
 # Proxy (Traefik) related settings
+proxy_use_letsencrypt_certs: true
+proxy_use_custom_certs: false
 proxy_tls_pem_fullchain_certfile: ""
 proxy_tls_pem_privkey_keyfile: ""
 
