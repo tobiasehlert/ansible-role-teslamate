@@ -1,0 +1,12 @@
+---
+tls:
+  certificates:
+    - certFile: {{ proxy_tls_pem_fullchain_certfile }}
+      keyFile: {{ proxy_tls_pem_privkey_keyfile }}
+      stores:
+        - default
+  stores:
+    default:
+      defaultCertificate:
+        certFile: {{ proxy_tls_pem_fullchain_certfile }}
+        keyFile: {{ proxy_tls_pem_privkey_keyfile }}

@@ -29,6 +29,11 @@
     src: env.j2
     dest: "{{ docker_compose_directory }}/.env"
 
+- name: Generating cert/config.yml file and placing in {{ docker_compose_directory }}
+  template:
+    src: cert-config.yml.j2
+    dest: "{{ docker_compose_directory }}/cert/config.yml"
+
 - name: Pulling latest version of TeslaMate
   docker_compose:
     project_src: "{{ docker_compose_directory }}"
